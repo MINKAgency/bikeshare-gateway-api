@@ -1,0 +1,19 @@
+parameters:
+    api_adapter.class: ApiBundle\Service\ApiAdapter
+    array_converter.class: ApiBundle\Service\ArrayConverter
+    distance_calculator.class: ApiBundle\Service\DistanceCalculator
+
+services:
+    api.api_adapter:
+        class: %api_adapter.class%
+        arguments:
+            - "@api.api_registry"
+            - "@cyclocity.data"
+            - "@api.distance_calculator"
+            - "@api.array_converter"
+
+    api.array_converter:
+        class: %array_converter.class%
+
+    api.distance_calculator:
+        class: %distance_calculator.class%
