@@ -1,0 +1,9 @@
+parameters:
+    api_controller.class: ApiBundle\Controller\ApiController
+
+services:
+    api.api_controller:
+        class: %api_controller.class%
+        arguments:
+            - "@api.api_adapter"
+            - "@serializer"

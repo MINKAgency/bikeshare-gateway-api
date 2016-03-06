@@ -1,2 +1,12 @@
-vendor/
-.idea/
+/app/config/parameters.yml
+/composer.phar
+/vendor/
+/web/bundles/
+/var/cache
+/var/logs
+/var/sessions
+!/var/cache/.gitkeep
+!/var/logs/.gitkeep
+!/var/sessions/.gitkeep
+/var/bootstrap.php.cache
+/.php_cs.cache

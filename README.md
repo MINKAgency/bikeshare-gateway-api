@@ -1,12 +1,10 @@
-# Usage :
-`composer install`  
-The API will be available in the subdirectory you put it.  
+bikeshare-gateway-api
+=========
 
-# Available calls
-At the moment, there is only 1 `GET` call available :
-`GET /nearest_station/$lat/$lon/$city`  
-  
-*Parameters :*
-- $lat : the latitude of the coordinates to search the nearest station from  
-- $lon : the longitude of the coordinates to search the nearest station from  
-- $city : the city identifier, as defined in `/helpers/Constants.php` 
+This is an API based on Symfony 3.0 which allows you to find the nearest bike station of your current position
+
+## Usage
+
+The returns format is JSON
+
+All calls availables are defined in ```/api/doc```

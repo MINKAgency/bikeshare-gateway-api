@@ -1,0 +1,27 @@
+parameters:
+    api_registry.class: ApiBundle\Registry\ApiRegistry
+    api_bordeaux.class: ApiBundle\ApiWrapper\Bordeaux
+    api_nice.class: ApiBundle\ApiWrapper\Nice
+
+services:
+    api.api_bordeaux:
+        class: %api_bordeaux.class%
+        arguments:
+            - "@guzzle.client.api_bordeaux"
+            - "@api.array_converter"
+            - "@api.distance_calculator"
+            - "%api_key_bordeaux%"
+        tags:
+            - {name: api.api_wrapper, alias: Bordeaux }
+
+    api.api_nice:
+        class: %api_nice.class%
+        arguments:
+            - "@guzzle.client.api_bordeaux"
+            - "@api.array_converter"
+            - "@api.distance_calculator"
+        tags:
+            - {name: api.api_wrapper, alias: Nice }
+
+    api.api_registry:
+        class: %api_registry.class%
