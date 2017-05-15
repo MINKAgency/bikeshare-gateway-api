@@ -2,6 +2,7 @@ parameters:
     api_registry.class: ApiBundle\Registry\ApiRegistry
     api_bordeaux.class: ApiBundle\ApiWrapper\Bordeaux
     api_nice.class: ApiBundle\ApiWrapper\Nice
+    api_strasbourg.class: ApiBundle\ApiWrapper\Strasbourg
 
 services:
     api.api_bordeaux:
@@ -22,6 +23,15 @@ services:
             - "@api.distance_calculator"
         tags:
             - {name: api.api_wrapper, alias: Nice }
+
+    api.api_strasbourg:
+            class: %api_strasbourg.class%
+            arguments:
+                - "@guzzle.client.api_strasbourg"
+                - "@api.array_converter"
+                - "@api.distance_calculator"
+            tags:
+                - {name: api.api_wrapper, alias: Strasbourg }
 
     api.api_registry:
         class: %api_registry.class%
