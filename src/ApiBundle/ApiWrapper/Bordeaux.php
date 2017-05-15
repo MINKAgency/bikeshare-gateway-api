@@ -47,12 +47,12 @@ class Bordeaux extends AbstractCityWrapper
         $currentNearestStation = null;
 
         foreach ($stations as $station) {
-            $consideredElement = $station['ms:CI_VCUB_P'];
-            if ($consideredElement['ms:ETAT'] !== 'CONNECTEE' || !(intval($consideredElement['ms:NBVELOS']) > 0)) {
+            $consideredElement = $station['bm:CI_VCUB_P'];
+            if ($consideredElement['bm:ETAT'] !== 'CONNECTEE' || !(intval($consideredElement['bm:NBVELOS']) > 0)) {
                 continue;
             }
 
-            $latLong         = explode(' ', $consideredElement['ms:msGeometry']['gml:Point']['gml:pos']);
+            $latLong         = explode(' ', $consideredElement['bm:geometry']['gml:Point']['gml:pos']);
             $stationLat      = floatval($latLong[0]);
             $stationLon      = floatval($latLong[1]);
             $currentDistance = $this
@@ -68,13 +68,13 @@ class Bordeaux extends AbstractCityWrapper
             }
         }
 
-        $nearestStation->setName($currentNearestStation['ms:NOM']);
-        $nearestStation->setAvailableBikes(intval($currentNearestStation['ms:NBVELOS']));
-        $nearestStation->setAvailableBikeStands(intval($currentNearestStation['ms:NBPLACES']));
+        $nearestStation->setName($currentNearestStation['bm:NOM']);
+        $nearestStation->setAvailableBikes(intval($currentNearestStation['bm:NBVELOS']));
+        $nearestStation->setAvailableBikeStands(intval($currentNearestStation['bm:NBPLACES']));
         $nearestStation->setDistance($nearestDistance);
         $nearestStation->setPosition($nearestPos);
-        $nearestStation->setNumber(intval($currentNearestStation['ms:GID']));
-        $nearestStation->setLastUpdate(strtotime($currentNearestStation['ms:HEURE']));
+        $nearestStation->setNumber(intval($currentNearestStation['bm:GID']));
+        $nearestStation->setLastUpdate(strtotime($currentNearestStation['bm:HEURE']));
 
         return $nearestStation;
     }

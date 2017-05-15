@@ -59,3 +59,5 @@ guzzle:
             base_url: http://data.bordeaux-metropole.fr/wfs
         api_nice:
             base_url: https://www.velobleu.org/cartoV2/libProxyCarto.asp
+        api_strasbourg:
+            base_url: http://velhop.strasbourg.eu/tvcstations.xml
